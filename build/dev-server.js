@@ -26,23 +26,25 @@ const apiRoutes = express.Router();
 apiRoutes.get('/seller', function (req, res) {
   res.json({
     errno: 0,
-    seller: seller
+    data: seller
   });
 });
 
 apiRoutes.get('/goods', function (req, res) {
   res.json({
     errno: 0,
-    seller: goods
+    data: goods
   });
 });
 
 apiRoutes.get('/ratings', function (req, res) {
   res.json({
     errno: 0,
-    seller: ratings
+    data: ratings
   });
 });
+
+app.use('/api', apiRoutes);
 
 var compiler = webpack(webpackConfig)
 
