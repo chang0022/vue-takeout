@@ -19,20 +19,19 @@
 <script>
   import header from './components/header/header';
 
-//  const ERR_OK = 0;
+  const ERR_OK = 0;
   export default {
     data() {
       return {
         seller: {}
       };
     },
-    create() {
-      this.axios.get.get('/api/seller')
+    created() {
+      this.axios.get('/api/seller')
         .then((response) => {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
+          if (response.data.errno === ERR_OK) {
+            this.seller = response.data.data;
+          }
         });
     },
     components: {
