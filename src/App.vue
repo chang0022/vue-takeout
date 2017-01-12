@@ -19,11 +19,21 @@
 <script>
   import header from './components/header/header';
 
+//  const ERR_OK = 0;
   export default {
     data() {
       return {
-          seller: {}
+        seller: {}
       };
+    },
+    create() {
+      this.axios.get.get('/api/seller')
+        .then((response) => {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
     components: {
       'v-header': header
