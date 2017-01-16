@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
     <div class="tab border-1px">
       <div class="tab-item">
         <router-link to="/goods">商品</router-link>
@@ -29,8 +29,9 @@
     created() {
       this.axios.get('/api/seller')
         .then((response) => {
-          if (response.data.errno === ERR_OK) {
-            this.seller = response.data.data;
+          const DATA = response.data;
+          if (DATA.errno === ERR_OK) {
+            this.seller = DATA.data;
           }
         });
     },
@@ -41,7 +42,8 @@
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-  @import "./common/stylus/mixin.styl"
+  @import "./common/stylus/mixin"
+
   .tab
     display flex
     width 100%
