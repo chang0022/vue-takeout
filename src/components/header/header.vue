@@ -17,16 +17,24 @@
           <span class="text">{{seller.supports[0].description}}</span>
         </div>
       </div>
-      <div v-if="seller.supports" class="support-count">
+      <div v-if="seller.supports" class="support-count" @click="showDetail">
         <span class="count">{{seller.supports.length}}个</span>
         <i class="icon-keyboard_arrow_right"></i>
       </div>
     </div>
-    <div class="bulletin-wrapper">
+    <div class="bulletin-wrapper" @click="showDetail">
       <span class="bulletin-title"></span><span class="bulletin-text">{{seller.bulletin}}</span>
       <i class="icon-keyboard_arrow_right"></i>
     </div>
     <div class="background" :style="{backgroundImage: 'url('+seller.avatar+')'}"></div>
+    <div v-show="detailShow" class="detail">
+      <div class="detail-wrapper clearfix">
+        <div class="detail-main"></div>
+      </div>
+      <div class="detail-close">
+        <i class="icon-close" @click="closeDetail"></i>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -35,6 +43,19 @@
     props: {
       seller: {
         type: Object
+      }
+    },
+    data() {
+      return {
+        detailShow: false
+      };
+    },
+    methods: {
+      showDetail() {
+        this.detailShow = true;
+      },
+      closeDetail() {
+        this.detailShow = false;
       }
     },
     created() {
@@ -134,7 +155,7 @@
       .bulletin-title
         display inline-block
         vertical-align top
-        margin-top 7px
+        margin-top 8px
         width 22px
         height 12px
         bg-image('bulletin')
@@ -157,4 +178,25 @@
       height 100%
       z-index -1
       filter blur(10px)
+    .detail
+      position fixed
+      top 0
+      left 0
+      z-index 100
+      width 100%
+      height 100%
+      overflow auto
+      background-color rgba(7, 17, 27, .8)
+      .detail-wrapper
+        min-height 100%
+        .detail-main
+          margin-top 64px
+          padding-bottom 64px
+      .detail-close
+        position relative
+        width 32px;
+        height 32px
+        margin -64px auto
+        clear both
+        font-size 32px
 </style>
