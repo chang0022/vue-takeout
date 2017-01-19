@@ -36,8 +36,22 @@
           </div>
           <div class="title">
             <div class="line"></div>
-            <div class="text"></div>
+            <div class="text">优惠信息</div>
             <div class="line"></div>
+          </div>
+          <ul v-if="seller.supports" class="supports">
+            <li class="support-item" v-for="(item, index) in seller.supports">
+              <span class="icon" :class="classMap[seller.supports[index].type]"></span>
+              <span class="text">{{seller.supports[index].description}}</span>
+            </li>
+          </ul>
+          <div class="title">
+            <div class="line"></div>
+            <div class="text">商家公共</div>
+            <div class="line"></div>
+          </div>
+          <div class="bulletin">
+            <p class="content">{{seller.bulletin}}</p>
           </div>
         </div>
       </div>
@@ -126,7 +140,7 @@
             width 12px
             height 12px
             margin-right 4px
-            background-size 12px
+            background-size 12px 12px
             background-repeat no-repeat
             &.decrease
               bg-image('decrease_1')
@@ -220,8 +234,53 @@
           .title
             display flex
             width 80%
-            margin 30px auto 24px
-
+            margin 28px auto 24px
+            .line
+              flex 1
+              position relative
+              top -6px
+              border-bottom 1px solid rgba(255, 255, 255, .2)
+            .text
+              padding 0 12px
+              font-size 14px
+              font-weight 700
+          .supports
+            width 80%
+            margin 0 auto
+            .support-item
+              padding 0 12px
+              margin-bottom 12px
+              font-size 0
+              &:last-of-type
+                margin-bottom 0
+              .icon
+                display inline-block
+                margin-right 6px
+                width 16px
+                height 16px
+                vertical-align top
+                background-size 16px 16px
+                background-repeat no-repeat
+                &.decrease
+                  bg-image('decrease_2')
+                &.discount
+                  bg-image('discount_2')
+                &.guarantee
+                  bg-image('guarantee_2')
+                &.invoice
+                  bg-image('invoice_2')
+                &.special
+                  bg-image('special_2')
+              .text
+                font-size 12px
+                line-height 16px
+          .bulletin
+            width 80%
+            margin 0 auto
+            .content
+              padding 0 12px
+              line-height 24px
+              font-size 12px
       .detail-close
         position relative
         width 32px;
