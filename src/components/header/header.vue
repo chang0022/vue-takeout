@@ -27,7 +27,8 @@
       <i class="icon-keyboard_arrow_right"></i>
     </div>
     <div class="background" :style="{backgroundImage: 'url('+seller.avatar+')'}"></div>
-    <div v-show="detailShow" class="detail">
+    <transition name="fade">
+      <div v-show="detailShow" class="detail">
       <div class="detail-wrapper clearfix">
         <div class="detail-main">
           <h1 class="name">{{seller.name}}</h1>
@@ -47,7 +48,7 @@
           </ul>
           <div class="title">
             <div class="line"></div>
-            <div class="text">商家公共</div>
+            <div class="text">商家公告</div>
             <div class="line"></div>
           </div>
           <div class="bulletin">
@@ -56,9 +57,10 @@
         </div>
       </div>
       <div class="detail-close">
-        <i class="icon-close" @click="closeDetail"></i>
+        <i class="icon-close" @click="hideDetail"></i>
       </div>
     </div>
+    </transition>
   </div>
 </template>
 
@@ -80,7 +82,7 @@
       showDetail() {
         this.detailShow = true;
       },
-      closeDetail() {
+      hideDetail() {
         this.detailShow = false;
       }
     },
@@ -216,6 +218,7 @@
       height 100%
       overflow auto
       background-color rgba(7, 17, 27, .8)
+      backdrop-filter blur(10px)
       .detail-wrapper
         width 100%
         min-height 100%
@@ -288,4 +291,8 @@
         margin -64px auto
         clear both
         font-size 32px
+  .fade-enter-active, .fade-leave-active
+    transition: opacity .5s
+  .fade-enter, .fade-leave-active
+    opacity: 0
 </style>
