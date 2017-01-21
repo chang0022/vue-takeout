@@ -286,7 +286,7 @@
               font-size 12px
       .detail-close
         position relative
-        width 32px;
+        width 32px
         height 32px
         margin -64px auto
         clear both
