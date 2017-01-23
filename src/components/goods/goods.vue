@@ -35,11 +35,13 @@
         </li>
       </ul>
     </div>
+    <shopCart></shopCart>
   </div>
 </template>
 
 <script>
   import BScroll from 'better-scroll';
+  import shopCart from 'components/shopCart/shopCart';
 
   const ERR_OK = 0;
 
@@ -112,11 +114,14 @@
           this.listHeight.push(height);
         });
       }
+    },
+    components: {
+      shopCart
     }
   };
 </script>
 
-<style scoped lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixin"
 
   .goods
