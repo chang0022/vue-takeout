@@ -27,6 +27,8 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.NoErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
+      title: 'Hello Vue-Demo',
+      favicon: 'favicon.ico',
       filename: 'index.html',
       template: 'index.html',
       inject: true
