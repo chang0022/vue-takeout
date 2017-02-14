@@ -1,6 +1,6 @@
 <template>
   <div class="cartControl">
-    <div class="cart-decrease icon-remove_circle_outline" v-show="food.count > 0"></div>
+    <div class="cart-decrease icon-remove_circle_outline" v-show="food.count > 0" @click="decreaseGoods"></div>
     <div class="cart-count" v-show="food.count > 0">{{food.count}}</div>
     <div class="cart-add icon-add_circle" @click="addGoods"></div>
   </div>
@@ -24,6 +24,14 @@
           Vue.set(this.food, 'count', 1);
         } else {
           this.food.count++;
+        }
+      },
+      decreaseGoods(event) {
+        if (!event._constructed) {
+          return false;
+        }
+        if (this.food.count) {
+          this.food.count--;
         }
       }
     }
