@@ -38,7 +38,8 @@
         </li>
       </ul>
     </div>
-    <shopCart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopCart>
+    <shopCart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice"
+              :min-price="seller.minPrice"></shopCart>
   </div>
 </template>
 
@@ -134,6 +135,11 @@
     components: {
       shopCart,
       cartControl
+    },
+    events: {
+      'cart.add'(target) {
+
+      }
     }
   };
 </script>
