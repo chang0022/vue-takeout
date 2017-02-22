@@ -18,11 +18,11 @@
       </div>
     </div>
     <div class="ball-container">
-      <transition name="drop">
-        <div class="ball" v-for="ball in balls" v-show="ball.show">
+      <transition-group name="drop" tag="div">
+        <div class="ball" v-for="ball in balls" v-show="ball.show" :key="ball">
           <div class="inner"></div>
         </div>
-      </transition>
+      </transition-group>
     </div>
   </div>
 </template>
@@ -54,7 +54,7 @@
           {show: false},
           {show: false}
         ]
-      }
+      };
     },
     computed: {
       totalPrice() {

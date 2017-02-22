@@ -30,7 +30,7 @@
                                                                 class="old">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cartControl-wrapper">
-                  <cartControl :food="food"></cartControl>
+                  <cartControl @add="addFood" :food="food"></cartControl>
                 </div>
               </div>
             </li>
@@ -130,16 +130,14 @@
           height += v.clientHeight;
           this.listHeight.push(height);
         });
+      },
+      addFood(target) {
+        console.log(target);
       }
     },
     components: {
       shopCart,
       cartControl
-    },
-    events: {
-      'cart.add'(target) {
-
-      }
     }
   };
 </script>
