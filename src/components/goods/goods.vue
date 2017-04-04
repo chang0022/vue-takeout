@@ -38,7 +38,7 @@
         </li>
       </ul>
     </div>
-    <shopCart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice"
+    <shopCart ref="shopCart" :select-foods="selectFoods" :delivery-price="seller.deliveryPrice"
               :min-price="seller.minPrice"></shopCart>
   </div>
 </template>
@@ -132,7 +132,7 @@
         });
       },
       addFood(target) {
-        console.log(target);
+        this.$refs.shopCart.drop(target);
       }
     },
     components: {
