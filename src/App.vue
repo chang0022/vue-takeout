@@ -27,7 +27,7 @@
       };
     },
     created() {
-      this.axios.get('/api/seller')
+      this.$http.get('/api/seller')
         .then((response) => {
           const DATA = response.data;
           if (DATA.errno === ERR_OK) {

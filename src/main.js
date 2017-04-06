@@ -3,7 +3,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import axios from 'axios';
-import VueAxios from 'vue-axios';
+import Vuex from 'vuex';
 import App from './App';
 
 import goods from 'components/goods/goods';
@@ -13,7 +13,19 @@ import seller from 'components/seller/seller';
 import 'common/stylus/index.styl';
 
 Vue.use(VueRouter);
-Vue.use(VueAxios, axios);
+Vue.use(Vuex);
+Vue.prototype.$http = axios;
+
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment(state) {
+      state.count++;
+    }
+  }
+});
 
 const routes = [
   {path: '/goods', component: goods},
@@ -28,6 +40,7 @@ const router = new VueRouter({
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app');
 

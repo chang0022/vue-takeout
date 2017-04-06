@@ -89,7 +89,7 @@
     created() {
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
 
-      this.axios.get('/api/goods')
+      this.$http.get('/api/goods')
         .then((response) => {
           const DATA = response.data;
           if (DATA.errno === ERR_OK) {
